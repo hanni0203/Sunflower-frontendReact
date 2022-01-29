@@ -6,7 +6,7 @@ let productInDataBase = {
     color:   "primary",
     titulo: "Total Products",
     valor: 0,
-    icono: "fas fa-film",
+    icono: "fas fa-seedling",
 }
 
 let userInDb ={
@@ -20,20 +20,21 @@ let categoriesInDb = {
     color:   "warning",
     titulo: "Total Categories",
     valor: 0,
-    icono: "fas fa-award",
+    icono: "fas fa-columns",
 } 
 
 let newArray = [productInDataBase,userInDb,categoriesInDb];
-let array=[];
 
 class ContentRowProducts extends Component{
     constructor(){
         super();
         this.state = {
-            count:0,
+            countProduct:0,
+            countUser:0,
+            countCategory:0,
+
         };
     }
-
 
     componentDidMount(){
         let apiProducts = fetch('/api/products')
@@ -43,25 +44,14 @@ class ContentRowProducts extends Component{
 
         Promise.all([apiProducts, apiusers, apiCategories])
         .then (results => Promise.all(results.map(r => r.json())))
-            /* return ([products.json(), categories.json(), users.json()]) */
         
         .then( cantidad => {
-            console.log(cantidad)
-            cantidad.map(element => {
+            /* console.log(cantidad) */
                this.setState({
-                    count:element.meta.total
+                countProduct: cantidad[0].meta.total,
+                countUser:cantidad[1].meta.total,
+                countCategory:cantidad[2].meta.total,
                 })
-               array.push(this.state.count);
-               for (let i=0; i<array.length;i++){
-                    for (let j=i; j< i+1; j++){
-                        newArray[j].valor = array[i]
-                    }
-                }
-                console.log (newArray)
-            })
-/*             console.log(newArray)
-            console.log(array)
- */            
         })
         .catch(error => {
            return console.log(error)
@@ -75,6 +65,10 @@ class ContentRowProducts extends Component{
 
 
     render(){
+        newArray[0].valor = this.state.countProduct;
+        newArray[1].valor = this.state.countUser;
+        newArray[2].valor = this.state.countCategory;
+
         return (
             <React.Fragment>
             {/*<!-- Content Row -->*/}

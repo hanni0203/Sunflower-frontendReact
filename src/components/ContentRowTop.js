@@ -1,5 +1,4 @@
 import React from 'react';
-import imagenFondo from '../assets/images/mandalorian.jpg';
 import CategoryInDb from './CategoryInDb';
 import ContentRowProducts from './ContentRowProducts';
 import LastProduct from './LastProduct';

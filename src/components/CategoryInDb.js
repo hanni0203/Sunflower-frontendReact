@@ -34,18 +34,7 @@ cambiarFondo(){
 }
 
 render(){
-    // let genres = [
-    //     {genre: 'Acción'},
-    //     {genre: 'Animación'},
-    //     {genre: 'Aventura'},
-    //     {genre: 'Ciencia Ficción'},
-    //     {genre: 'Comedia'},
-    //     {genre: 'Documental'},
-    //     {genre: 'Drama'},
-    //     {genre: 'Fantasia'},
-    //     {genre: 'Infantiles'},
-    //     {genre: 'Musical'}
-    // ]
+  
     return(
        
         <div className="col-lg-6 mb-4">						
